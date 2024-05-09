@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle, #a7aece, #090e3f);
+}
+
+#hora{
+    width: 500px;
+    height: 500px;
+    position: relative;
+    background: radial-gradient(circle, #090e3f, #0e1318);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hora::before{
+    content: "";
+    width: 525px;
+    height: 525px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to right, #142ea1, #029790);
+    box-shadow: 0 0 15px 15px rgba(0, 0, 0, .2);
+    z-index: -1;
+}
+
+#hora h1{
+    color: white;
+    text-shadow: 2px 2px 2px #090e3f;
+    animation: sabino 4s infinite alternate;
+}
+
+@keyframes sabino{
+    0%{
+        color: white;
+    }
+
+    50%{
+        color: #5761ee;
+        transform: translateY(-50px);
+    }
+
+    100%{
+        color: #090e3f;
+    }
+}
+
+#numero{
+    color: #f9f9f9;
+    transform: rotate(calc(30deg * var(--n)));
+    position: absolute;
+    text-align: center;
+    inset: 10px;
+    font-size: 40px;
+    text-shadow: 0 0 5px #029790;
+}
+
+#numero b{
+    transform: rotate(calc(-30deg * var(--n)));
+    display: inline-block;
+}
+
+#centro{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #090e3f;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    /* left: 0%; */
+}
+
+#pont-hora,
+#pont-minutos,
+#pont-segundos{ 
+    --rotacao: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%) rotate(calc(var(--rotacao) * 1deg));
+    transform-origin: bottom;
+    border-radius: 30px 30px 0 0;
+}
+
+#pont-hora{
+    width: 12px;
+    height: 130px;
+    background: linear-gradient(#142ea1, #fff);
+}
+
+#pont-minutos{
+    width: 12px;
+    height: 190px;
+    background: linear-gradient(to top, #142ea1, #fff);
+}
+
+#pont-segundos{
+    width: 6px;
+    height: 210px;
+    background: linear-gradient(to bottom, #090e3f, #fff);
+}
+
